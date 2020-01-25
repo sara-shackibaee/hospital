@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html>
+<header>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    
+    <title>my web</title>
+    <style>
+
+        table {
+                    border-collapse: collapse;
+                    }
+
+                    table, th, td {
+                    border: 1px solid black;
+                     {display: block;}
+                }
+        select {
+            padding: 30 30px 0 30px;
+            border: 1px solid #AAA;
+            -moz-border-radius: 25px;
+            -webkit-border-radius: 25px;
+            border-radius: 25px;
+            outline: none;
+        }
+        
+        button {
+            padding: 30 30px 0 30px;
+            border: 1px solid #AAA;
+            -webkit-border-radius: 25px;
+            border-radius: 25px;
+            outline: none;
+        }
+        body{
+             background-color: lightblue
+        }
+    </style>
+
+</header>
+
+
+<body>
+    <br>
+    <br>
+    <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                    <a class="navbar-brand" href="#">WebSiteName</a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">Page 1</a></li>
+                    <li><a href="#">Page 2</a></li>
+                    </ul>
+                    <form class="navbar-form navbar-left" action="/action_page.php">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="search">
+                        <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+    </nav>
+    <br>
+    <select style="background-color:Bisque" id="s1">
+                    <option >Select Ostan</option>
+                    <option id='o1' >tehran</option>
+                    <option id='o2'>mazandaran</option>
+                    <option id='o3'>azarbayjan-sh</option>
+                    <option id='o4'>azarbayjan-gh</option>
+                    <option id='o5'>kermanshah</option>
+                    <option id='o6'>khoozestan</option>
+                    <option id='o7'>fars</option>
+                    <option id='o8'>kerman</option>
+                    <option id='o9'>  razavi</option>
+                    <option id='o10'> esfahan</option>
+                    <option id='o11'>  khorasan shomali</option>
+                    <option id='o12'> kordestan</option>
+                    <option id='o13'> hormozgan</option>
+                    <option id='o14'> hamedan</option>
+                    <option id='o15'>chaharmahal</option>
+                    <option id='o16'>lorestan</option>
+                    <option id='o17'>ellam</option>
+                    <option id='o18'>kohkilooyeh</option>
+                    <option id='o19'>zanjan</option>
+                    <option id='o20'>  khorasan-s</option>
+                    <option id='o21'>markazi </option>
+                    <option id='o22'> alborze</option>
+                    <option id='o23'> gilan</option>
+                    <option id='o24'> ardebile</option>
+                    <option id='o25'> ghome</option>
+                    <option id='o26'>ghazvine </option>
+                    <option id='o27'> golestan</option>
+                    <option id='o28'>  sistan</option>
+                    <option id='o29'> yazd</option>
+                    <option id='o30'>boshehre</option>
+                    <option id='o31'>semnan</option>
+                    
+            </select>
+    <select style="background-color:Cyan" id="s2">
+                    <option id='g1'>   select gharardad</option>
+                    <option id='g2'> jarahi</option>
+                    <option id='g3'>fizioterapi</option>
+                    <option id='g4'>darookhane</option>
+                    <option id='g5'>azmayeshgah</option>
+                    <option id='g6'> bimarestan khososi</option>
+                    <option id='g7'> bimarestan dolati</option>
+                    <option id='g8'> eynak sazi</option>
+                    <option id='g9'>clinick</option>
+                  
+                    <option id='g11'>tasvirbardary</option>
+                    <option id='g12'> dandan pezeshki</option>
+                    <option id='g14'>matab</option>
+                    <option id='g15'>kheiriyeh</option>
+                    <option id='g16'> tajhizat pezeshki</option>
+                    <option id='g17'>orzhance</option>
+                    <option id='g19'>darmangah</option>
+            </select >
+            <select style="background-color:Yellow" id="s3">
+                    
+                    <option  selected>darad</option>
+                    <option >nadarad</option>
+            </select>
+    <button type="button" id="btn">SEARCH</button><br><br>
+    <br>
+    <div class="container">
+            <table id='table' class="table table-dark">
+
+                <thead >
+                    <tr>
+                        <td>ostan</td>
+                        <td>noegharardad</td>
+                        <td>Bimarestan</td>
+                    </tr>
+                </thead>
+            </table>
+    </div>
+            
+
+        <script>
+                    
+                        $(document).ready(function() {
+                            $("#btn").click(function() {
+                            var x = $("#s1").val()
+                            
+                            var y = $("#s2").val()
+                           
+                            var z = $("#s3").val()
+                           
+                            var data = [x,y,z]
+                            var ajaxreq = $.ajax({
+                            method: 'POST',
+                            url: 'http://localhost:3000/',
+                            data:{
+                                x:x,
+                                y:y,
+                                z:z
+                            }
+
+                            }).done(function(res,err){
+                                if(res){
+                                    console.log("the res is:",res)
+                                    
+                                    data = JSON.parse(res)
+                                    result = data[0]
+                                    console.log(result.onvanemarkazedarmani)
+                                    console.log(result.noegharardad)
+                                    console.log(result.ostan)
+                                    row = "<tr><td>" + result.ostan+ "</td>" + "<td>" + result.noegharardad + "</td>" + "<td>" + result.onvanemarkazedarmani + "</td></tr>"
+                                    console.log(row)
+                                    $("#table").append(row)
+
+                                }else{
+                                    console.log("the err is:",err)
+                                }
+                            
+                        
+                                })
+                            console.log('ajax')
+                             })
+                    
+                    
+                    
+
+                        })
+        
+        
+        </script>
+
+
+
+
+</body>
+
+
+
+
+</html>
